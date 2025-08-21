@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Marlee's fullstack/DevEx portfolio monorepo",
+  "license": "MIT",
+  "packageManager": "pnpm@10.15.0",
+  "engines": { "node": ">=20.0.0" },
+  "scripts": {
+    "dev:all": "turbo run dev --parallel",
+    "build:all": "turbo run build",
+    "lint:all": "turbo run lint",
+    "test:all": "turbo run test",
+    "format": "prettier -w .",
+    "prepare": "husky install",
+    "test": "turbo run test --filter=...[HEAD]"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.6",
+    "typescript": "^5.9.2"
+  }
+}

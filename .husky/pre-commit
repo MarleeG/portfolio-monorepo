@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run linting across workspaces. Keep tests out of pre-commit for now.
+pnpm lint:all
