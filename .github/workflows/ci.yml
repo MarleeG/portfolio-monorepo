@@ -7,7 +7,33 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          # version: 9   ❌ remove this line
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint:all
+      - run: pnpm build:all
+      - run: pnpm test:all
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          # Let the action read the version from package.json's "packageManager"
           run_install: false
 
       - uses: actions/setup-node@v4
